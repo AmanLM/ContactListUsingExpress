@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=title%>
+    </title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Contact List</h1>
+
+    <div id=data-container>
+        <ul>
+            <% for(let i of contact_List){ %>
+                <li>
+                    <p>
+                        <%= i.name %>
+                    </p>
+                    <p>
+                        <%= i.phone %>
+                    </p>
+                    <a href="/delete-contact/?id=<%= i._id %>">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </li>
+                <% } %>
+        </ul>
+    </div>
+
+    <form action="/create-contact" method="POST">
+        <input type="text" name="name" placeholder="Enter Name" required><br>
+        <input type="text" name="phone" placeholder="Enter Number" required><br>
+        <button type="submit">Submit</button>
+    </form>
+    <script type="text/javascript" src="home.js"></script>
+</body>
+
+</html>
