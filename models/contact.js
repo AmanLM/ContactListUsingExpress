@@ -14,5 +14,3 @@ const ContactShema = new mongoose.Schema({
 const Contact = mongoose.model('Contact',ContactShema);
 
 module.exports = Contact;
-
-console.log("Working");

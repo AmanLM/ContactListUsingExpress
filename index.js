@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8000;
@@ -9,29 +12,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded());
 app.use(express.static('assets'));
-
-var contactList = [
-    {
-        name: "Aman",
-        phone: "9307144887"
-    },
-    {
-        name: "Kartik",
-        phone: "9307144812"
-    },
-    {
-        name: "Tanmay",
-        phone: "9307144876"
-    },
-    {
-        name: "Gaurav",
-        phone: "9307144886"
-    },
-    {
-        name: "Arun",
-        phone: "9307144888"
-    }
-]
 
 app.get('/', function (req, res) {
 
@@ -49,16 +29,7 @@ app.get('/', function (req, res) {
     });
 })
 
-// app.get('/practice', function (req, res) {
-//     return res.render('practice', { title: "PlayGround", age: 16 });
-// })
-
 app.post('/create-contact', function (req, res) {
-
-    // contactList.push({
-    //     name: req.body.name,
-    //     phone: req.body.phone
-    // });
 
     Contact.create({
         name: req.body.name,
@@ -68,7 +39,6 @@ app.post('/create-contact', function (req, res) {
             console.log("Error, Contact has not been created");
             return;
         }
-        console.log("******", newContact);
         return res.redirect('/');
     }
     )

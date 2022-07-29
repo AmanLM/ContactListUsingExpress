@@ -1,21 +1,14 @@
-// const mongoose = require("mongoose");
-// mongoose.connect('mongodb://localhost/contact_list_db');//connecting to database
+const mongoose = require('mongoose');
 
-// const db = mongoose.connection;//aquire connection
+mongoose
+  .connect(process.env.MONGODB_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Connecting to MongoDB cloud');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-// db.on('error',console.error.bind(console,'Error connecting to DB'));
-
-// db.once('open',function(){
-//     console.log("Successfully Connected");
-// });
-
-// module.export = db;
-
-
-const mongoose=require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/contact_list_db');
-const db=mongoose.connection;
-db.on('error',console.error.bind(console,'error bind to db'));
-db.once('open',function(){
-    console.log('successfully connected to database')
-})
